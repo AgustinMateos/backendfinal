@@ -1,4 +1,4 @@
-import userModel from "../models/UserModel.js";
+import userModel from "../dao/models/UserModel.js";
 
 export const findUsers = async () => {
     try {
@@ -10,11 +10,11 @@ export const findUsers = async () => {
 
 }
 
-export const findUserById = async (id) => {
+export const findUserById = async (_id) => {
     try {
-        const user = await userModel.findById(id)
+        const user = await userModel.findById(_id)
         return user
-    } catch (error) {
+    } catch (error) { 
         return error
     }
 

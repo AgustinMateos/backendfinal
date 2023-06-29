@@ -1,19 +1,19 @@
 
 let jugueteModel
 const BDD = 1
-console.log(BDD)
+console.log("Se selecciono la base de datos numero: "+BDD+" para trabajar con los juguetes service")
 if (BDD == 1) {
-    await import("../models/MongoDB/JugueteModel.js").then(modulo => {
+    await import("../dao/models/MongoDB/JugueteModel.js").then(modulo => {
         jugueteModel = modulo.default
     }
     )
 } else {
-    await import("../models/Postgresql/JugueteModel.js").then(modulo => {
+    await import("../dao/models/Postgresql/JugueteModel.js").then(modulo => {
         jugueteModel = modulo.default
     })
 }
 
-console.log(jugueteModel)
+
 
 export const findToys = async () => {
     try {
@@ -23,7 +23,6 @@ export const findToys = async () => {
         } else {
             toys = await jugueteModel.findAll()
         }
-        console.log(toys)
         return toys
     } catch (error) {
         return error
@@ -49,3 +48,4 @@ export const createToy = async (toy) => {
     }
 
 }
+
