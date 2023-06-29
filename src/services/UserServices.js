@@ -35,6 +35,7 @@ export const createUser = async (user) => {
         const newUser = new userModel(user)
         await newUser.save()
         return newUser
+        
     } catch (error) {
         return error
     }
