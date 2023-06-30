@@ -1,4 +1,4 @@
-import userModel from "../dao/models/UserModel.js";
+import userModel from "../dao/models/MongoDB/UserModel.js";
 
 export const findUsers = async () => {
     try {
@@ -18,6 +18,16 @@ export const findUserById = async (_id) => {
         return error
     }
 
+}
+
+export const findAndUpdateUser=async(id, ...info)=> {
+    
+    try {
+        const user = await userModel.findByIdAndUpdate(id, ...info)
+        return user
+    } catch (error) {
+        return error
+    }
 }
 
 export const findUserByEmail = async (email) => {
@@ -41,3 +51,4 @@ export const createUser = async (user) => {
     }
 
 }
+

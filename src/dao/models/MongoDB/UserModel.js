@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import mongoose,{ Schema, model } from 'mongoose'
 
 const userSchema = new Schema({
     first_name: {
@@ -25,7 +25,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    },
+    }
 })
 
 const userModel = model("UserProducts", userSchema)

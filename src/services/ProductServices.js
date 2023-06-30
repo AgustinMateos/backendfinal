@@ -1,33 +1,16 @@
-
-let productModel
+import productModel from "../dao/models/MongoDB/ProductModel.js"
+let productoModel
 const BDD = 1
 console.log("Se selecciono la base de datos numero: "+BDD+" para trabajar con los productos service")
 if (BDD == 1) {
     await import("../dao/models/MongoDB/ProductModel.js").then(modulo => {
-        productModel = modulo.default
+        productoModel = modulo.default
     }
     )
 } else {
     await import("../dao/models/Postgresql/ProductoModel.js").then(modulo => {
-    productModel = modulo.default
+    productoModel = modulo.default
     })
-}
-
-
-
-export const findproducts = async () => {
-    try {
-        let products
-        if (BDD == 1) {
-            products = await productModel.find()
-        } else {
-            products = await productModel.findAll()
-        }
-        return products
-    } catch (error) {
-        return error
-    }
-
 }
 
 export const createProduct = async (product) => {
@@ -50,3 +33,39 @@ export const createProduct = async (product) => {
 
 }
 
+
+export const findproducts = async () => {
+    try {
+        let products
+        if (BDD == 1) {
+            products = await productModel.find()
+        } else {
+            products = await productModel.findAll()
+        }
+        return products
+    } catch (error) {
+        return error
+    }
+
+}
+
+
+export const findProductById = async (_id) => {
+    try {
+        const user = await productModel.findById(_id)
+        return user
+    } catch (error) { 
+        return error
+    }
+
+}
+
+export const findAndUpdateElement=async(id, ...info)=> {
+    
+    try {
+        const product = await productModel.findByIdAndUpdate(id, ...info)
+        return product
+    } catch (error) {
+        return error
+    }
+}
