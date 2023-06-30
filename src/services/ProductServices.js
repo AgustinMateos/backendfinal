@@ -40,6 +40,7 @@ export const createProduct = async (product) => {
         } else {
             newProduct = productModel.build(product)
             newProduct.save()
+            
         }
 
         return newProduct

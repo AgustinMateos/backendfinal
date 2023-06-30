@@ -32,13 +32,13 @@ export const loginUser = async (req, res, next) => {
                 res.cookie('jwt', token, { httpOnly: true })
                 return res.status(200).json({ token })
             } else {
-                //El token existe, asi que lo valido
+                //Validacion de token existente
                
                 const token = req.cookies.jwt;
                 jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
                     if (err) {
                         // Token no valido
-                        return res.status(401).send("Credenciales no válidas")
+                        return res.status(401).send("Credenciales no validas")
                     } else {
                         // Token valido
                         req.user = user
