@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose'
 
-const jugueteSchema = new Schema({
+const productSchema = new Schema({
     nombre: {
         type: String,
         required: true
@@ -15,6 +15,6 @@ const jugueteSchema = new Schema({
     }
 })
 
-const jugueteModel = model("Juguete", jugueteSchema)
+const productModel = model("Productos", productSchema)
 
-export default jugueteModel
+export default productModel

@@ -28,6 +28,6 @@ const userSchema = new Schema({
     },
 })
 
-const userModel = model("UserToys", userSchema)
+const userModel = model("UserProducts", userSchema)
 
 export default userModel

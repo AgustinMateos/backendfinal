@@ -1,14 +1,14 @@
 
 let productModel
 const BDD = 1
-console.log("Se selecciono la base de datos numero: "+BDD+" para trabajar con los juguetes service")
+console.log("Se selecciono la base de datos numero: "+BDD+" para trabajar con los productos service")
 if (BDD == 1) {
     await import("../dao/models/MongoDB/ProductModel.js").then(modulo => {
         productModel = modulo.default
     }
     )
 } else {
-    await import("../dao/models/Postgresql/JugueteModel.js").then(modulo => {
+    await import("../dao/models/Postgresql/ProductModel.js").then(modulo => {
     productModel = modulo.default
     })
 }
