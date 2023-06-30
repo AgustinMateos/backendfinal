@@ -17,10 +17,7 @@ export const loginUser = async (req, res, next) => {
                 const { email, password } = req.body
                 const userBDD = await findUserByEmail(email)
 
-                if (!userBDD) {
-                    // UserBDD no encontrado en mi aplicacion
-                    return res.redirect('http://localhost:4000/register/') 
-                }
+                
 
                 if (!validatePassword(password, userBDD.password)) {
                     // Contraseña no válida
@@ -55,28 +52,22 @@ export const loginUser = async (req, res, next) => {
 }
 export const registerUser = async (req, res) => {
     try {
-        const { first_name, last_name, email, age, password } = req.body
+        const { first_name, last_name, email, age, password,rol } = req.body
         const userBDD = await findUserByEmail(email)
 
         if (userBDD) {
             res.status(401).send("Usuario ya registrado")
         } else {
             const hashPassword = createHash(password)
-            const newUser = await createUser({ first_name, last_name, email, age, password: hashPassword })
+            const newUser = await createUser({ first_name, last_name, email, age, password: hashPassword,rol })
             console.log(newUser)
             const token = jwt.sign({ user: { id: newUser._id } }, process.env.JWT_SECRET);
-
-            // const infoMensaje = await twilioClient.messages.create({
-            //     from:"+14849788821", 
-            //     to: "+5491164316343",
-            //     body:"El usuario nuevo"
-            // }) 
-
+            console.log(token);
             res.cookie('jwt', token, { httpOnly: true });
-            return res.status(201).json({ token });
-
-           
+            res.status(201).json({ token });
             
+           
+             
         }
 
 

@@ -8,7 +8,7 @@ if (BDD == 1) {
     }
     )
 } else {
-    await import("../dao/models/Postgresql/ProductModel.js").then(modulo => {
+    await import("../dao/models/Postgresql/JugueteModel.js").then(modulo => {
     productModel = modulo.default
     })
 }
