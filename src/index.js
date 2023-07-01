@@ -8,6 +8,7 @@ import routerUsers from './routes/users.js'
 import routerSession from './routes/session.js'
 import passport from 'passport'
 import initializePassport from './config/passport.js'
+import routerCart from './routes/cart.js'
 
 
 const app = express()
@@ -25,6 +26,7 @@ initializePassport(passport)
 app.use('/products', routerProducts)
 app.use('/auth', routerSession)
 app.use('/users', routerUsers)
+app.use('/cart',routerCart)
 //mensajeria twilio
 
 // const TWILIO_ACCOUNT_SID = "AC1b079ee816f0ffbfe16a2af8b87a0818";
