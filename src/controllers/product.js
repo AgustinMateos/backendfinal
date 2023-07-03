@@ -5,7 +5,7 @@ import { findproducts, createProduct, findProductById, findAndUpdateElement } fr
 export const postPodructs = async (req, res) => {
     try {
         const { nombre, descripcion, precio } = req.body
-        const newProduct = createProduct({ nombre, descripcion, precio })
+        const newProduct =await createProduct({ nombre, descripcion, precio })
         res.status(200).send(newProduct)
     } catch (error) {
         res.status(500).send('Error en postProducts', error)

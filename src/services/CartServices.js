@@ -1,7 +1,7 @@
 import cartModel from "../dao/models/MongoDB/CartModel.js"
 let carritoModel
 const BDD = 1
-console.log("Se selecciono la base de datos numero: "+BDD+" para trabajar con los carritos service")
+console.log("Se selecciono la base de datos numero: " + BDD + " para trabajar con los carritos service")
 if (BDD == 1) {
     await import("../dao/models/MongoDB/CartModel.js").then(modulo => {
         carritoModel = modulo.default
@@ -9,7 +9,7 @@ if (BDD == 1) {
     )
 } else {
     await import("../dao/models/Postgresql/ProductoModel.js").then(modulo => {
-    carritoModel = modulo.default
+        carritoModel = modulo.default
     })
 }
 
@@ -23,7 +23,7 @@ export const createCarrito = async (cart) => {
         } else {
             newCart = cartModel.build(cart)
             newCart.save()
-            
+
         }
 
         return newCart
@@ -33,11 +33,14 @@ export const createCarrito = async (cart) => {
 
 }
 
-export const  addProductCart= async (id, idProd, cant)=> {
-    try{const carrito = await cartModel.findById(id)
-    carrito.products.push({ id_prod: idProd, quantity: cant })
-    return carrito.save()}catch{return console.log('no se pudo agregar')}
-    
+export const addProductCart = async (id, idProd, cant) => {
+    try {
+        const carrito = await cartModel.findById(id)
+        carrito.products.push({ id_prod: idProd, quantity: cant })
+        return carrito.save()
+    }
+    catch { return console.log('no se pudo agregar') }
+
 }
 
 
@@ -50,6 +53,16 @@ export const findCarts = async () => {
             carts = await cartModel.findAll()
         }
         return carts
+    } catch (error) {
+        return error
+    }
+
+}
+
+export const findCartById = async (_id) => {
+    try {
+        const user = await cartModel.findById(_id)
+        return user
     } catch (error) {
         return error
     }

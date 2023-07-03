@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { getCarts, postCart, postProductCart } from "../controllers/cart.js";
+import { getCarts, postCart, postProductCart,getCartById} from "../controllers/cart.js";
+import { postOrder } from "../controllers/order.js";
+
+
+
 
 
 
@@ -8,6 +12,8 @@ import { getCarts, postCart, postProductCart } from "../controllers/cart.js";
 routerCart.post('/newCart',postCart)
 routerCart.post('/addToCart/:id',postProductCart)
 routerCart.get('/',getCarts)
+routerCart.get('/:id',getCartById)
+routerCart.post('/newOrder/:id',postOrder)
 
 
 export default routerCart

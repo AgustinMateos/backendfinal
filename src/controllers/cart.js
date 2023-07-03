@@ -1,4 +1,4 @@
-import { createCarrito,addProductCart,findCarts } from "../services/CartServices.js"
+import { createCarrito,addProductCart,findCarts,findCartById } from "../services/CartServices.js"
 
 export const postCart = async (req, res) => {
     try {
@@ -38,4 +38,14 @@ export const getCarts = async (req, res) => {
         res.status(500).send("Error en getCarts", error)
     }
 
+}
+
+export const getCartById=async (req, res)=>{
+    const { id } = req.params
+    try{
+        const cartById= await findCartById(id)
+        res.status(200).send(cartById)
+    }catch(error){
+        res.status(500).send("error en la busqueda del carrito por id",error)
+    }
 }
