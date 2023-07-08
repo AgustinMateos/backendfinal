@@ -10,7 +10,9 @@ import passport from 'passport'
 import initializePassport from './config/passport.js'
 import routerCart from './routes/cart.js'
 import routerMocking from './routes/mockingTest.js'
-import compression from "express-compression";
+import compression from "express-compression"
+import routertestproduct from './helpers/productErrors.js'
+import errorHandler from './helpers/productErrors.js'
 const app = express()
 
 app.use(express.json())
@@ -30,7 +32,8 @@ app.use('/auth', routerSession)
 app.use('/users', routerUsers)
 app.use('/cart',routerCart)
 app.use('/mockingproducts',routerMocking)
-
+app.use('/testprocuts',routertestproduct)
+app.use(errorHandler)
 
 
 app.listen(4000, () => {
