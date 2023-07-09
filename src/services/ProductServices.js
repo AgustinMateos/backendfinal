@@ -1,4 +1,4 @@
-import productModel from "../dao/models/MongoDB/ProductModel.js"
+import {productModel} from "../dao/models/MongoDB/ProductModel.js"
 let productoModel
 const BDD = 1
 console.log("Se selecciono la base de datos numero: "+BDD+" para trabajar con los productos service")

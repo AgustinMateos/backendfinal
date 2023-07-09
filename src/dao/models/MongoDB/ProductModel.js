@@ -15,6 +15,5 @@ const productSchema = new Schema({
     }
 })
 
-const productModel = model("Productos", productSchema)
-
-export default productModel
+export const productModel = model("Productos", productSchema)
+export const productModelMocking=model("Productos mocking",productSchema)

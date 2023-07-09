@@ -32,7 +32,7 @@ app.use('/auth', routerSession)
 app.use('/users', routerUsers)
 app.use('/cart',routerCart)
 app.use('/mockingproducts',routerMocking)
-app.use('/testprocuts',routertestproduct)
+app.use('/testproducts',routertestproduct)
 app.use(errorHandler)
 
 
