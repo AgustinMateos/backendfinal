@@ -1,6 +1,8 @@
 import { createOrdenService } from "../services/OrderService.js";
 import { findCartById } from "../services/CartServices.js";
+import { getLogger } from "../helpers/logger.js";
 
+const logger=getLogger()
 export const postOrder=async(req,res)=>{
     try {
            const{id}=req.params
@@ -28,6 +30,7 @@ export const postOrder=async(req,res)=>{
     res.send({resultOrder})
     
     } catch (error) {
+        logger.error("Error al crear la orden")
         res.status(500).send('Error en crear la orden', error)
     }
  

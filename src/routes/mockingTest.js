@@ -2,6 +2,9 @@
 import { Router } from "express";
 import {productModelMocking} from "../dao/models/MongoDB/ProductModel.js";
 import { faker } from "@faker-js/faker";
+import { getLogger } from "../helpers/logger.js";
+
+const logger=getLogger()
 
 
 const routerMocking = Router()
@@ -24,9 +27,9 @@ routerMocking.get('/', async (req, res) => {
         await productModelMocking.insertMany(products);
 
         res.json({ message: 'Productos generados satisfactoriamente' });
-        console.log(products)
+        logger.info(products)
     } catch (error) {
-        console.error('Error al generar los productos:', error);
+        logger.error('Error al generar los productos:');
         res.status(500).json({ error: 'Error al generar los productos' });
     }
 });

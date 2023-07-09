@@ -1,7 +1,10 @@
 import orderModel from "../dao/models/MongoDB/OrderModel.js"
+import { getLogger } from "../helpers/logger.js";
 let ordenModel
-const BDD = 1
-console.log("Se selecciono la base de datos numero: " + BDD + " para trabajar con las orders service")
+const BDD = 1;
+const logger = getLogger();
+
+logger.info("Se selecciono la base de datos numero: " + BDD + " para trabajar con las orders service")
 if (BDD == 1) {
     await import("../dao/models/MongoDB/OrderModel.js").then(modulo => {
         ordenModel = modulo.default

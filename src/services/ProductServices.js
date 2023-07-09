@@ -1,7 +1,10 @@
 import {productModel} from "../dao/models/MongoDB/ProductModel.js"
-let productoModel
+import { getLogger } from "../helpers/logger.js";
+const logger = getLogger();
+
 const BDD = 1
-console.log("Se selecciono la base de datos numero: "+BDD+" para trabajar con los productos service")
+let productoModel
+logger.info("Se selecciono la base de datos numero: "+BDD+" para trabajar con los productos service")
 if (BDD == 1) {
     await import("../dao/models/MongoDB/ProductModel.js").then(modulo => {
         productoModel = modulo.default
@@ -57,7 +60,8 @@ export const findProductById = async (_id) => {
     } catch (error) { 
         return error
     }
-
+// const productDTO = new ProductDTO( product )
+        // return productDTO
 }
 
 export const findAndUpdateElement=async(id, ...info)=> {

@@ -1,7 +1,12 @@
-import cartModel from "../dao/models/MongoDB/CartModel.js"
-let carritoModel
+import cartModel from "../dao/models/MongoDB/CartModel.js";
+
+import { getLogger } from "../helpers/logger.js";
+const logger=getLogger();
+
+
 const BDD = 1
-console.log("Se selecciono la base de datos numero: " + BDD + " para trabajar con los carritos service")
+let carritoModel
+logger.info("Se selecciono la base de datos numero: " + BDD + " para trabajar con los carritos service")
 if (BDD == 1) {
     await import("../dao/models/MongoDB/CartModel.js").then(modulo => {
         carritoModel = modulo.default
@@ -39,7 +44,7 @@ export const addProductCart = async (id, idProd, cant) => {
         carrito.products.push({ id_prod: idProd, quantity: cant })
         return carrito.save()
     }
-    catch { return console.log('no se pudo agregar') }
+    catch { return logger.error('no se pudo agregar') }
 
 }
 

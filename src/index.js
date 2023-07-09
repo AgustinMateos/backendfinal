@@ -13,11 +13,14 @@ import routerMocking from './routes/mockingTest.js'
 import compression from "express-compression"
 import routertestproduct from './helpers/productErrors.js'
 import errorHandler from './helpers/productErrors.js'
+import routerLoggerTest from './routes/loggerTest.js'
+import { getLogger } from './helpers/logger.js'
+
 const app = express()
 
 app.use(express.json())
-
-connectionMongoose().then(connect => console.log("Mongoose conectado"))
+const logger = getLogger();
+connectionMongoose().then(connect => logger.info("Mongoose conectado"))
 
 app.use(cookieParser(process.env.JWT_SECRET))
 app.use(passport.initialize())
@@ -27,17 +30,21 @@ initializePassport(passport)
 app.use(compression({
     brotli:{enabled:true,zlib:{}}
 }))
+
 app.use('/products', routerProducts)
 app.use('/auth', routerSession)
 app.use('/users', routerUsers)
 app.use('/cart',routerCart)
 app.use('/mockingproducts',routerMocking)
 app.use('/testproducts',routertestproduct)
+app.use('/loggerTest',routerLoggerTest)
 app.use(errorHandler)
 
 
+
 app.listen(4000, () => {
-    console.log(`Server on port 4000`)
+    
+        logger.info(`Server on port 4000`)
 })
 
 
