@@ -12,7 +12,7 @@ routertestproduct.post('/',(req,res)=>{
     const { nombre, descripcion, precio } = req.body;
 if (!nombre || !descripcion || !precio) {
     CustomError.createError({
-        name: "Product creat error",
+        name: "Product creat error ",
         cause: generateProductErrorInfo({ nombre, descripcion, precio }),
         message: `El producto no se pudo crear`,
         code: EErrors.INVALID_TYPES_ERROR
