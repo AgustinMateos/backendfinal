@@ -7,7 +7,7 @@ import { postOrder } from "../controllers/order.js";
 
 
 
- const routerCart=Router()
+const routerCart=Router()
 
 routerCart.post('/newCart',postCart)
 routerCart.post('/addToCart/:id',postProductCart)

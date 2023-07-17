@@ -1,5 +1,5 @@
 paths:
-  /carts/:
+  /cart/:
     get:
       summary: "Consultar por todos los carritos"
       tags:

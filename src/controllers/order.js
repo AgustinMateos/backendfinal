@@ -38,7 +38,19 @@ export const postOrder=async(req,res)=>{
 
 
 
+// export const getOrders = async (req, res) => {
+//     try {
+//         const carts = await findCarts()
+//         logger.info(carts)
+//         res.status(200).send(carts)
 
+//     } catch (error) {
+        
+//         logger.error('Error al traer los carritos');
+//         res.status(500).send("Error al traer los carritos", error)
+//     }
+
+// }
 
 
 
