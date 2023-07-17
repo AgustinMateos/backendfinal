@@ -1,0 +1,56 @@
+paths:
+  /carts/:
+    get:
+      summary: "Consultar por todos los carritos"
+      tags:
+          - Carts
+      responses:
+        "200":
+          description: "carritos obtenidos" 
+          content: 
+            application/json:
+              schema:  
+                type: array
+                items:
+                  $ref: '#components/schemas/Cart'
+        "500":
+          description: "Error al buscar los carritos"
+  /cart/{uid}:
+     get:
+      summary: obtener un carrito por id
+      tags:
+        - Carts
+      parameters: 
+      - name: uid
+        in: path
+        requiered: true 
+        description: id del cart solicitado
+        schema: 
+          $type: String
+      responses: 
+        "200":
+          description: "cart encontrado"
+          content: 
+            aplication/json:
+              schema:
+                $ref: "#components/schemas/Cart"
+components:
+  schemas:
+    Cart: 
+      type: object
+      properties:
+        _id: 
+          type: ObjectId
+          description: Id Autogenerado
+        id_prod: 
+          type: ObjectId
+          description: Id Autogenerado  
+        quantity:
+          type: number
+          description: cantidad de productos del cart
+      example:
+        _id: ObjectId("32d4233t444")
+        id_prod: ObjectId("32d4233t4acxax44")
+        quantity: 3
+       
+          
