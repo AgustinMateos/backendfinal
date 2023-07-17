@@ -15,12 +15,31 @@ import routertestproduct from './helpers/productErrors.js'
 import errorHandler from './helpers/productErrors.js'
 import routerLoggerTest from './routes/loggerTest.js'
 import { getLogger } from './helpers/logger.js'
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUiExpress from 'swagger-ui-express'
+import __dirname from './path.js'
 
 const app = express()
 
 app.use(express.json())
 const logger = getLogger();
 connectionMongoose().then(connect => logger.info("Mongoose conectado"))
+
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.1',
+        info: {
+            title: "Doc de mi aplicacion",
+            decription: "Aqui iria la descripcion de mi proyecto"
+        }
+    },
+    apis: [`${__dirname}/docs/**/*.yaml`]
+}
+console.log(`${__dirname}`)
+const specs = swaggerJSDoc(swaggerOptions)
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
+
+
 
 app.use(cookieParser(process.env.JWT_SECRET))
 app.use(passport.initialize())

@@ -10,6 +10,7 @@ export const getUsers = async (req, res) => {
         res.status(200).send(users)
 
     } catch (error) {
+        logger.error("error al buscar los usuarios")
         res.status(500).send(error)
     }
 

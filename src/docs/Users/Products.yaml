@@ -1,0 +1,59 @@
+paths:
+  /products/:
+    get:
+      summary: "Consultar por todos los productos"
+      tags:
+          - Products
+      responses:
+        "200":
+          description: "productos obtenidos" 
+          content: 
+            application/json:
+              schema:  
+                type: array
+                items:
+                  $ref: '#components/schemas/Product'
+        "500":
+          description: "Error al buscar los productos"
+  /products/{uid}:
+     get:
+      summary: obtener un producto por id
+      tags:
+        - Products
+      parameters: 
+      - name: uid
+        in: path
+        requiered: true 
+        description: id del producto solicitado
+        schema: 
+          $type: String
+      responses: 
+        "200":
+          description: "producto encontrado"
+          content: 
+            aplication/json:
+              schema:
+                $ref: "#components/schemas/Product"
+components:
+  schemas:
+    Product: 
+      type: object
+      properties:
+        _id: 
+          type: ObjectId
+          description: Id Autogenerado
+        nombre:
+          type: string
+          description: nombre del producto
+        descripcion:
+          type: string
+          description: descripcion del producto
+        precio:
+          type: number
+          description: precio del producto
+      example:
+        _id: ObjectId("32d4233t444")
+        nombre: "boca juniors 2000"
+        descripcion: "remera boca 2000 -japon"
+        precio: "40"
+          
