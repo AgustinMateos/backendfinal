@@ -40,6 +40,7 @@ export const findUserByEmail = async (email) => {
 
 }
 
+
 export const createUser = async (user) => {
     try {
         const newUser = new userModel(user)
