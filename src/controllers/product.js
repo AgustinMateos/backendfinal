@@ -34,7 +34,7 @@ export const getProductById=async (req, res)=>{
         const productById= await findProductById(id)
         res.status(200).send(productById)
     }catch(error){
-        logger.info('Error al traer el producto por id', error);
+        logger.info('Error al traer el producto por id');
         res.status(500).send("error en la busqueda de producto por id",error)
     }
 }

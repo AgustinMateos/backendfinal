@@ -44,13 +44,12 @@ export const getUserById=async (req, res)=>{
         const userById= await findUserById(id)
         if (userById) {
             return res.status(200).json({
-                message: "User eliminado"
-            })
+                message: userById
+            }) 
         }
-        logger.info("se trajo correctamente el usuario by id")
-        res.status(200).send(userById)
+      
 
-
+    logger.info("se trajo correctamente el usuario by id")
         
     }catch(error){
         logger.error("error al buscar el usuario by id")
