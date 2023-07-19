@@ -1,4 +1,4 @@
-import { findUsers,findUserById,findAndUpdateUser } from "../services/UserServices.js";
+import { findUsers,findUserById,findAndUpdateUser, deleteUserById } from "../services/UserServices.js";
 import { getLogger } from "../helpers/logger.js";
 
 const logger= getLogger()
@@ -42,13 +42,34 @@ export const getUserById=async (req, res)=>{
     const { id } = req.params
     try{
         const userById= await findUserById(id)
+        if (userById) {
+            return res.status(200).json({
+                message: "User eliminado"
+            })
+        }
         logger.info("se trajo correctamente el usuario by id")
+        res.status(200).send(userById)
+
+
+        
+    }catch(error){
+        logger.error("error al buscar el usuario by id")
+        res.status(500).send(error)
+    }
+}
+
+export const UserByIDelete=async (req, res)=>{
+    const { id } = req.params
+    try{
+        const userById= await deleteUserById(id)
+        logger.info("se trajo y se elimino correctamente el usuario by id")
         res.status(200).send(userById)
     }catch(error){
         logger.error("error al buscar el usuario by id")
         res.status(500).send(error)
     }
 }
+
 
 
 

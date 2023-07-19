@@ -53,3 +53,12 @@ export const createUser = async (user) => {
 
 }
 
+export const deleteUserById = async (_id) => {
+    try {
+        const user = await userModel.findByIdAndDelete(_id)
+        return user
+    } catch (error) { 
+        return error
+    }
+
+}

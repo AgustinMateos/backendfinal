@@ -6,3 +6,6 @@
 {"level":"info","message":"Server on port 4000"}
 {"level":"info","message":"Server on port 4000"}
 {"level":"info","message":"Server on port 4000"}
+{"level":"error","message":"error al buscar el usuario by id"}
+{"level":"error","message":"error al buscar el usuario by id"}
+{"level":"error","message":"error al buscar el usuario by id"}
