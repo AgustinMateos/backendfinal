@@ -20,8 +20,9 @@ import swaggerUiExpress from 'swagger-ui-express'
 import __dirname from './path.js'
 
 const app = express()
-
+const PORT = process.env.PORT||8080;
 app.use(express.json())
+
 const logger = getLogger();
 connectionMongoose().then(connect => logger.info("Mongoose conectado"))
 
@@ -61,7 +62,7 @@ app.use(errorHandler)
 
 
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
     
         logger.info(`Server on port 4000`)
 })

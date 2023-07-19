@@ -9,3 +9,5 @@
 {"level":"error","message":"error al buscar el usuario by id"}
 {"level":"error","message":"error al buscar el usuario by id"}
 {"level":"error","message":"error al buscar el usuario by id"}
+{"level":"error","message":"Error al traer los productos"}
+{"level":"error","message":"Error al traer los productos"}
