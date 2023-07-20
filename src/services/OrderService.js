@@ -1,7 +1,7 @@
 import orderModel from "../dao/models/MongoDB/OrderModel.js"
 import { getLogger } from "../helpers/logger.js";
 let ordenModel
-const BDD = 1;
+const BDD = process.env.SELECTEDBDD
 const logger = getLogger();
 
 logger.info("Se selecciono la base de datos numero: " + BDD + " para trabajar con las orders service")

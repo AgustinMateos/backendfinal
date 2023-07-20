@@ -4,7 +4,7 @@ import { getLogger } from "../helpers/logger.js";
 const logger=getLogger();
 
 
-const BDD = 1
+const BDD = process.env.SELECTEDBDD
 let carritoModel
 logger.info("Se selecciono la base de datos numero: " + BDD + " para trabajar con los carritos service")
 if (BDD == 1) {

@@ -2,7 +2,8 @@ import {productModel} from "../dao/models/MongoDB/ProductModel.js"
 import { getLogger } from "../helpers/logger.js";
 const logger = getLogger();
 
-const BDD = 1
+const BDD = process.env.SELECTEDBDD
+
 let productoModel
 logger.info("Se selecciono la base de datos numero: "+BDD+" para trabajar con los productos service")
 if (BDD == 1) {
