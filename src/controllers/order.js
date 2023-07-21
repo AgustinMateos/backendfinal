@@ -1,4 +1,4 @@
-import { createOrdenService } from "../services/OrderService.js";
+import { createOrdenService} from "../services/OrderService.js";
 import { findCartById } from "../services/CartServices.js";
 import { getLogger } from "../helpers/logger.js";
 
@@ -16,10 +16,18 @@ export const postOrder=async(req,res)=>{
         //             return acc
         //          },0);
             
+        function obtenerFechaHoy() {
+            const fechaHoy = new Date();
+            const dia = fechaHoy.getDate();
+            const mes = fechaHoy.getMonth() + 1; 
+            const anio = fechaHoy.getFullYear();
+          
+            return `${dia}/${mes}/${anio}`;
+          }
        let order = {
-      
-        number:Date.now(),
-        status:"pending",
+        date: obtenerFechaHoy(),
+        numberOrder:Date.now()+Math.floor(Math.random()*1000),
+        status:"success",
         carrito:actualOrder,
         // totalPrice:sum 
     
@@ -37,61 +45,3 @@ export const postOrder=async(req,res)=>{
 }
 
 
-
-// export const getOrders = async (req, res) => {
-//     try {
-//         const carts = await findCarts()
-//         logger.info(carts)
-//         res.status(200).send(carts)
-
-//     } catch (error) {
-        
-//         logger.error('Error al traer los carritos');
-//         res.status(500).send("Error al traer los carritos", error)
-//     }
-
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import orderModel from "../dao/models/MongoDB/OrderModel.js";
-// import { findCartById } from "../services/CartServices.js";
-
-// export const createOrden=async(req,res)=>{
-//      const {id }=req.body
-//      const resultCart= await findCartById(id)
-     
-//     //  const actualOrders= resultCart   .filter(product=>product.includes(product.id))
-//     const actualOrders= resultCart.products
-//     let sum = actualOrders.reduce((acc,prev)=>{
-//         acc+=prev.precio
-//         return acc
-//      },0);
-
-//    let orderNumber=Date.now() 
-//    let order = {
-      
-//     number:orderNumber,
-//     status:"pending",
-//     cart:actualOrders.map(product=>product.id),
-//     totalPrice:sum
-//    }
-
-//    let orderResult= await orderModel.createOrderService(order)
-//    order.push(orderResult._id)
-//    res.send({status:"success",orderResult})
-   
-// }

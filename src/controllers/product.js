@@ -1,4 +1,4 @@
-import { findproducts, createProduct, findProductById, findAndUpdateElement } from "../services/ProductServices.js"
+import { findproducts, createProduct, findProductById, findAndUpdateElement,deleteProductById } from "../services/ProductServices.js"
 import { getLogger } from "../helpers/logger.js"
 
 const logger = getLogger();
@@ -63,3 +63,14 @@ export const putUpdateProduct = async (req, res) => {
     }
 
 }
+
+export const ProductByIDelete=async (req, res)=>{
+    const { id } = req.params
+    try{
+        const userById= await deleteProductById(id)
+        logger.info("se trajo y se elimino correctamente el producto by id")
+        res.status(200).send("se elimino el producto by id")
+    }catch(error){
+        logger.error("error al buscar el producto by id para ser eliminado")
+        res.status(500).send(error)
+    }}

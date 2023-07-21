@@ -2,6 +2,7 @@ import userModel from "../dao/MongoDB/models/UserModel.js"
 import { getLogger } from "../helpers/logger.js";
 const logger = getLogger();
 
+
 const BDD = process.env.SELECTEDBDD
 
 let productoModel
@@ -78,3 +79,4 @@ export const deleteUserById = async (_id) => {
     }
 
 }
+

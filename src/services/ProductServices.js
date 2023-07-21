@@ -73,3 +73,13 @@ export const findAndUpdateElement=async(id, ...info)=> {
         return error
     }
 }
+
+export const deleteProductById = async (_id) => {
+    try {
+        const user = await userModel.findByIdAndDelete(_id)
+        return user
+    } catch (error) { 
+        return error
+    }
+
+}

@@ -1,4 +1,4 @@
-import { findUsers,findUserById,findAndUpdateUser, deleteUserById } from "../services/UserServices.js";
+import { findUsers,findUserById,findAndUpdateUser, deleteUserById} from "../services/UserServices.js";
 import { getLogger } from "../helpers/logger.js";
 
 const logger= getLogger()
@@ -13,6 +13,7 @@ export const getUsers = async (req, res) => {
         logger.error("error al buscar los usuarios")
         res.status(500).send(error)
     }
+    
 
 }
 export const putUpdateUser = async (req, res) => {

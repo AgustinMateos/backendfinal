@@ -1,10 +1,14 @@
 import {Schema,model}from 'mongoose'
 
 const orderSchema =new Schema({
-    number:{
+    numberOrder:{
         type:String,
         required:true
     },
+    date: {
+        type:String,
+        required: true,
+      },
     carrito:{
         type:Array,
         required: true
@@ -13,6 +17,7 @@ const orderSchema =new Schema({
     status:{
     type:String
     }
+    
     
 })
 

@@ -32,8 +32,15 @@ export const createOrdenService=async(orden)=>{
 
 }
 
+export const deleteOrderById = async (_id) => {
+    try {
+        const user = await orderModel.findByIdAndDelete(_id)
+        return user
+    } catch (error) { 
+        return error
+    }
 
-
+}
 
 
 
