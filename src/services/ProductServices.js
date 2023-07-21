@@ -1,20 +1,20 @@
-import {productModel} from "../dao/models/MongoDB/ProductModel.js"
+import {productModel} from "../dao/MongoDB/models/ProductModel.js"
 import { getLogger } from "../helpers/logger.js";
 const logger = getLogger();
 
-const BDD = process.env.SELECTEDBDD
+const BDD = 1
 let productoModel
 logger.info("Se selecciono la base de datos numero: "+BDD+" para trabajar con los productos service")
-if (BDD == 1) {
-    await import("../dao/models/MongoDB/ProductModel.js").then(modulo => {
-        productoModel = modulo.default
-    }
-    )
-} else {
-    await import("../dao/models/Postgresql/ProductoModel.js").then(modulo => {
-    productoModel = modulo.default
-    })
-}
+// if (BDD == 1) {
+//     await import("../dao/models/MongoDB/ProductModel.js").then(modulo => {
+//         productoModel = modulo.default
+//     }
+//     )
+// } else {
+//     await import("../dao/models/Postgresql/ProductoModel.js").then(modulo => {
+//     productoModel = modulo.default
+//     })
+// }
 
 export const createProduct = async (product) => {
 

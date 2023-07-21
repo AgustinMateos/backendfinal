@@ -1,4 +1,4 @@
-import userModel from "../dao/models/MongoDB/UserModel.js";
+import userModel from "../dao/MongoDB/models/UserModel.js"
 import { getLogger } from "../helpers/logger.js";
 const logger = getLogger();
 
@@ -6,16 +6,16 @@ const BDD = process.env.SELECTEDBDD
 
 let productoModel
 logger.info("Se selecciono la base de datos numero: "+ BDD +" para trabajar con los usuarios service")
-if (BDD == 1) {
-    await import("../dao/models/MongoDB/UserModel.js").then(modulo => {
-        productoModel = modulo.default
-    }
-    )
-} else {
-    await import("../dao/models/Postgresql/ProductoModel.js").then(modulo => {
-    productoModel = modulo.default
-    })
-}
+// if (BDD == 1) {
+//     await import("../dao/MongoDB/models/UserModel.js").then(modulo => {
+//         productoModel = modulo.default
+//     }
+//     )
+// } else {
+//     await import("../dao/models/Postgresql/ProductoModel.js").then(modulo => {
+//     productoModel = modulo.default
+//     })
+// }
 export const findUsers = async () => {
     try {
         const users = await userModel.find()

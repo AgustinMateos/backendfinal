@@ -1,6 +1,5 @@
-
 import { Router } from "express";
-import {productModelMocking} from "../dao/models/MongoDB/ProductModel.js";
+import { productModelMocking } from "../dao/MongoDB/models/ProductModel.js";
 import { faker } from "@faker-js/faker";
 import { getLogger } from "../helpers/logger.js";
 
