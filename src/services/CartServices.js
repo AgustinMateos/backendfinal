@@ -7,16 +7,7 @@ const logger=getLogger();
 const BDD = process.env.SELECTEDBDD
 let carritoModel
 logger.info("Se selecciono la base de datos numero: " + BDD + " para trabajar con los carritos service")
-// if (BDD == 1) {
-//     await import("../dao/models/MongoDB/CartModel.js").then(modulo => {
-//         carritoModel = modulo.default
-//     }
-//     )
-// } else {
-//     await import("../dao/models/Postgresql/ProductoModel.js").then(modulo => {
-//         carritoModel = modulo.default
-//     })
-// }
+
 
 export const createCarrito = async (cart) => {
 

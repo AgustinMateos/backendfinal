@@ -6,6 +6,7 @@ const logger= getLogger()
 export const getUsers = async (req, res) => {
     try {
         const users = await findUsers()
+        
         logger.info("se trajeron los productos correctamente")
         res.status(200).send(users)
 

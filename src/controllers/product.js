@@ -4,8 +4,8 @@ import { getLogger } from "../helpers/logger.js"
 const logger = getLogger();
 export const postPodructs = async (req, res) => {
     try {
-        const { nombre, descripcion, precio } = req.body
-        const newProduct =await createProduct({ nombre, descripcion, precio })
+        const { nombre, descripcion, precio,stock } = req.body
+        const newProduct =await createProduct({ nombre, descripcion, precio,stock })
         logger.info("Se creo un producto")
         res.status(200).send(newProduct)
     } catch (error) {

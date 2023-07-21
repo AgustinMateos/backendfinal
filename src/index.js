@@ -31,7 +31,7 @@ const swaggerOptions = {
         openapi: '3.0.1',
         info: {
             title: "Doc de mi aplicacion",
-            decription: "Aqui iria la descripcion de mi proyecto"
+            decription: "ecommerce "
         }
     },
     apis: [`${__dirname}/docs/**/*.yaml`]

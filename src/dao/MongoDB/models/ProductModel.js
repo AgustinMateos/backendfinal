@@ -12,7 +12,12 @@ const productSchema = new Schema({
     precio: {
         type: Number,
         required: true
+    },
+    stock: {
+        type: Number,
+        required:true
     }
+
 })
 
 export const productModel = model("Productos", productSchema)

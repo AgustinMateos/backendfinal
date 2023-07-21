@@ -5,16 +5,7 @@ const BDD = process.env.SELECTEDBDD
 const logger = getLogger();
 
 logger.info("Se selecciono la base de datos numero: " + BDD + " para trabajar con las orders service")
-// if (BDD == 1) {
-//     await import("../dao/models/MongoDB/OrderModel.js").then(modulo => {
-//         ordenModel = modulo.default
-//     }
-//     )
-// } else {
-//     await import("../dao/models/Postgresql/ProductoModel.js").then(modulo => {
-//     ordenModel = modulo.default
-//     })
-// }
+
 
 export const createOrdenService=async(orden)=>{
     try{

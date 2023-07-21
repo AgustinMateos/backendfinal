@@ -60,6 +60,9 @@ components:
         password:
           type: string
           description: password del usuario
+        lastLogin: 
+          type: string
+          description: ultima fecha de login
       example:
         _id: ObjectId("32d4233t444")
         first_name: "juan"
@@ -67,4 +70,5 @@ components:
         age: "23"
         email: jperez@.com
         rol: "User"
-        password: "cscscs"    
+        password: "cscscs"   
+        lastLogin: "2023-07-21T04:17:17.094Z" 
