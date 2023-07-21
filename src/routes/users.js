@@ -8,4 +8,5 @@ routerUsers.get('/:id',getUserById)
 routerUsers.put('/:id',putUpdateUser)
 routerUsers.delete('/:id',UserByIDelete)
 
+
 export default routerUsers

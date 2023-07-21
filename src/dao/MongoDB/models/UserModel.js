@@ -25,7 +25,11 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    }, 
+    lastLogin: {
+        type: Date,
+        default: null,
+      },
 })
 
 const userModel = model("UserProducts", userSchema)

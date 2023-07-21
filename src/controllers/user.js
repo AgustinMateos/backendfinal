@@ -14,7 +14,6 @@ export const getUsers = async (req, res) => {
         res.status(500).send(error)
     }
     
-
 }
 export const putUpdateUser = async (req, res) => {
     const { id } = req.params
@@ -48,7 +47,6 @@ export const getUserById=async (req, res)=>{
                 message: userById
             }) 
         }
-      
 
     logger.info("se trajo correctamente el usuario by id")
         

@@ -11,10 +11,7 @@ export const postOrder=async(req,res)=>{
            
            const actualOrder= resultCart.products
 
-        //    let sum = actualOrder.reduce((acc,prev)=>{
-        //             acc+=prev.precio 
-        //             return acc
-        //          },0);
+    
             
         function obtenerFechaHoy() {
             const fechaHoy = new Date();
@@ -29,7 +26,7 @@ export const postOrder=async(req,res)=>{
         numberOrder:Date.now()+Math.floor(Math.random()*1000),
         status:"success",
         carrito:actualOrder,
-        // totalPrice:sum 
+        
     
    }
    

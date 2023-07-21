@@ -2,8 +2,8 @@ import { createUser, findUserByEmail } from "../services/UserServices.js";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import { validatePassword, createHash } from "../utils/bcrypt.js";
-// import { twilioClient } from "../mensajeria/twilio.js";
 import { getLogger } from "../helpers/logger.js"
+
 const logger = getLogger();
 
 export const loginUser = async (req, res, next) => {
@@ -19,8 +19,7 @@ export const loginUser = async (req, res, next) => {
                 const { email, password } = req.body
                 const userBDD = await findUserByEmail(email)
 
-                
-
+        
                 if (!validatePassword(password, userBDD.password)) {
                     // Contraseña no válida
                     logger.error("contrasena novalida")
@@ -29,6 +28,9 @@ export const loginUser = async (req, res, next) => {
 
                 // genero un nuevo  token porque el usuario es valido, 
                 const token = jwt.sign({ user: { id: userBDD._id } }, process.env.JWT_SECRET)
+                userBDD.lastLogin = new Date();
+                await userBDD.save();
+                console.log(userBDD)
                 res.cookie('jwt', token, { httpOnly: true })
                 logger.info("se genero un nuevo token")
                 return res.status(200).json({ token })
