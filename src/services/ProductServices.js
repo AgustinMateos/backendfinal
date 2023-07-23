@@ -54,8 +54,7 @@ export const findProductById = async (_id) => {
     } catch (error) { 
         return error
     }
-// const productDTO = new ProductDTO( product )
-        // return productDTO
+
 }
 
 export const findAndUpdateElement=async(id, ...info)=> {

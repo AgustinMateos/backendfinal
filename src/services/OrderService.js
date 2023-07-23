@@ -47,17 +47,3 @@ export const deleteOrderById = async (_id) => {
 
 
 
-// import orderModel from "../dao/models/MongoDB/OrderModel.js";
-
-// export default class Order{
-//      createOrderService=async(order)=>{
-//          try{
-//             let result=await orderModel.create(order)
-//             return result;
-//          }catch(error){
-//           console.log(error);
-//           return null
-//          }
-
-//      }
-// }
