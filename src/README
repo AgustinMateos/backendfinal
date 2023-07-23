@@ -1,0 +1,43 @@
+## ENDPOINTS
+
+# /api/products
+
+- GET "/" : esta ruta trae todos los productos cargados en la base de datos.
+
+- POST "/": pasando los parametros adecuados se pueden cargar productos en la base de datos.
+
+- GET "/:id": esta ruta permite traer productos individuales a partir de su numero de id.
+
+- DELETE "/:id": esta ruta permite eliminar productos de la base de datos.
+
+# /api/cart
+
+- GET "/" : esta ruta permite traerse todos los carritos cargados en la base de datos.
+
+- POST "/newCart" : esta ruta crea un carrito, en el caso de estar trabajando con Mongo DB dicho carrito se creara tambien en la session del usuario que entro en la aplicacion a traves de sus credenciales.
+
+- GET "/:id": esta ruta permite buscar un carrito de la base de datos a traves de su id.
+
+
+- POST "/addToCart/:id": esta ruta permite agregar un producto al carrito.
+
+- POST "/newOrder/:id": esta ruta es la que permite finalizar con la compra. Una vez que se ejectue se enviara una mail y un mensaje al administrador de la aplicacion avisandole que se realizo una nueva compra y al mismo tiempo el comprador recibira un mensaje de texto que confirma su compra.
+
+
+
+
+# /api/auth
+
+- GET "/register": esta pensada para traer a vista un formulario de registro.
+
+- GET "/login": esta ruta esta pensada para traer a vista un formulario de login.
+
+
+
+## Camino para usuario que quiere comprar productos
+
+1) POST - "/auth/register": para registrarse.
+2) POST - "/auth/login": para loguearse.
+3) POST - "/cart/newCart": para crear un carrito.
+4) POST - "/addToCart/:id": para añadir un producto al carrito.
+5) POST - "/cart/newOrder/:id": para finalizar la compra.
