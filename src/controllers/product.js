@@ -69,7 +69,7 @@ export const ProductByIDelete=async (req, res)=>{
     try{
         const userById= await deleteProductById(id)
         logger.info("se trajo y se elimino correctamente el producto by id")
-        res.status(200).send("se elimino el producto by id")
+        res.status(200).send("se elimino el producto by id ")
     }catch(error){
         logger.error("error al buscar el producto by id para ser eliminado")
         res.status(500).send(error)
